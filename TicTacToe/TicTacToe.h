@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 class TicTacToe
 {
 private:
@@ -12,6 +13,6 @@ public:
 	~TicTacToe();
 	bool sendMove(int row, int col, char player);
 	bool checkWin(char player);
-	void printBoard();
+	friend std::ostream& operator<<(std::ostream& os, TicTacToe& game);
 };
 

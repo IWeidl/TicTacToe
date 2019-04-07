@@ -1,35 +1,32 @@
 #include "TicTacToe.h"
-#include <cstdlib>
-#include <iostream>
 
 int main() {
 	TicTacToe game;
-	game.printBoard();
+	std::cout << game;
+	int row, col;
 	while (true) {
-		int row, col;
-		std::cout << std::endl << "Player 1 move: ";
+		std::cout << std::endl << "Player 1 move (ROW/COL): ";
 		std::cin >> row >> col;
 		while (!game.sendMove(row, col, 'X')) {
-			std::cout << std::endl << "Invaid move, please try again: ";
+			std::cout << std::endl << "Invaid move, please try again (ROW/COL): ";
 			std::cin >> row >> col;
 		}
 		if (game.checkWin('X')) {
 			std::cout << std::endl << "Player 1 Wins!";
 			break;
 		}
-		game.printBoard();
-		std::cout << std::endl << "Player 2 move: ";
+		std::cout << game;
+		std::cout << std::endl << "Player 2 move (ROW/COL): ";
 		std::cin >> row >> col;
 		while (!game.sendMove(row, col, 'O')) {
 			std::cout << std::endl << "Invalid move, please try again: ";
 			std::cin >> row >> col;
 		}
 		if (game.checkWin('O')) {
-			std::cout << std::endl << "Player 2 Wins!";
+			std::cout << std::endl << "Player 2 Wins! (ROW/COL)";
 			break;
 		}
 		game.sendMove(row, col, 'O');
-		game.printBoard();
+		std::cout << game;
 	}
-	system("pause");
 }
